@@ -1,0 +1,158 @@
+//Preloader in React///////////////////////////////////////////////////////////////////////////////
+
+import React from "react"
+import ContentLoader from "react-content-loader"
+
+const MyLoader = (props) => (
+  <ContentLoader 
+    speed={2}
+    width={400}
+    height={150}
+    viewBox="0 0 400 150"
+    backgroundColor="#f3f3f3"
+    foregroundColor="#ecebeb"
+    {...props}
+  >
+    <circle cx="10" cy="20" r="8" /> 
+    <rect x="25" y="15" rx="5" ry="5" width="220" height="10" /> 
+    <circle cx="10" cy="50" r="8" /> 
+    <rect x="25" y="45" rx="5" ry="5" width="220" height="10" /> 
+    <circle cx="10" cy="80" r="8" /> 
+    <rect x="25" y="75" rx="5" ry="5" width="220" height="10" /> 
+    <circle cx="10" cy="110" r="8" /> 
+    <rect x="25" y="105" rx="5" ry="5" width="220" height="10" />
+  </ContentLoader>
+)
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////CountDown/////////////////////////////////////////////////////////////////////////////////////
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+
+function CountdownTimer() {
+  const calculateTimeLeft = () => {
+    const difference = +new Date("YYYY-MM-DD") - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      };
+    }
+
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+  });
+
+  const timerComponents = [];
+
+  Object.keys(timeLeft).forEach(interval => {
+    if (!timeLeft[interval]) {
+      return;
+    }
+
+    timerComponents.push(
+      <span>
+        {timeLeft[interval]} {interval}{" "}
+      </span>
+    );
+  });
+
+  return (
+    <div>
+      //<h1>Alligator.io New Year's 2020 Countdown</h1>
+      //<h2>With React Hooks!</h2>
+      {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+    </div>
+  );
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+//NewsLetter///////////////////////////////////////////////////////////////////////////////////////
+
+<div class="container">
+		<h1 class="text-center m-5">SUBSCRIBE TO OUR NEWSLETTER</h1>		
+	</div>
+	<section class="bg-dark text-center p-5 mt-4">
+		<div class="container p-3">
+			<h3 class="text-white">SUBSCRIBE NOW</h3>
+			<form action="#" method="Post">
+				<input type="text" name="text" placeholder="Enter Your Email Id">
+				<button type="button" class="btn btn-default">Subscribe<i class="fa fa-envelope"></i></button>
+			</form>
+		</div>
+	</section>
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+ //Upcoming Events///////////////////////////////////////////////////////////////////////////////////
+ <div class="container-wide">
+          <div class="row justify-content-xl-end row-30">
+            <div class="col-xl-8">
+              <div class="parallax-text-wrap">
+                <h3>Upcoming Events</h3><span class="parallax-text">events</span>
+              </div>
+              <hr class="divider divider-default">
+            </div>
+            <div class="col-xl-3 text-xl-right"><a class="button button-secondary button-nina" href="#">view all events</a></div>
+          </div>
+          <div class="row row-50">
+            <div class="col-md-6 col-xl-4">
+              <article class="event-default-wrap">
+                <div class="event-default">
+                  <figure class="event-default-image"><img src="images/event-02-570x370.jpg" alt="" width="570" height="370">
+                  </figure>
+                  <div class="event-default-date-wrap">
+                    <time datetime="2019"><span class="event-default-date">31</span><span class="event-default-month">Mar</span><span class="event-default-time">10:00 am</span></time>
+                  </div>
+                  <div class="event-default-caption"><a class="button button-xs button-secondary button-nina" href="registration-page.html">book now</a></div>
+                </div>
+                <div class="event-default-inner">
+                  <div class="box-inline"><span class="icon novi-icon icon-md-middle icon-secondary mdi mdi-map-marker"></span><a class="event-default-link" href="single-event.html">2130 Fulton Street, San Diego</a></div>
+                  <h5><a class="event-default-title" href="single-event.html">Small Business Expo 2019 — San Diego</a></h5>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="event-default-wrap">
+                <div class="event-default">
+                  <figure class="event-default-image"><img src="images/event-03-570x370.jpg" alt="" width="570" height="370">
+                  </figure>
+                  <div class="event-default-date-wrap">
+                    <time datetime="2019"><span class="event-default-date">2</span><span class="event-default-month">Apr</span><span class="event-default-time">10:00 am</span></time>
+                  </div>
+                  <div class="event-default-caption"><a class="button button-xs button-secondary button-nina" href="registration-page.html">book now</a></div>
+                </div>
+                <div class="event-default-inner">
+                  <div class="box-inline"><span class="icon novi-icon icon-md-middle icon-secondary mdi mdi-map-marker"></span><a class="event-default-link" href="single-event.html">2130 Fulton Street, San Diego</a></div>
+                  <h5><a class="event-default-title" href="single-event.html">Chief Learning Officer Forum USA 2019</a></h5>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-4">
+              <article class="event-default-wrap">
+                <div class="event-default">
+                  <figure class="event-default-image"><img src="images/event-01-570x370.jpg" alt="" width="570" height="370">
+                  </figure>
+                  <div class="event-default-date-wrap">
+                    <time datetime="2019"><span class="event-default-date">19</span><span class="event-default-month">Apr</span><span class="event-default-time">10:00 am</span></time>
+                  </div>
+                  <div class="event-default-caption"><a class="button button-xs button-secondary button-nina" href="registration-page.html">book now</a></div>
+                </div>
+                <div class="event-default-inner">
+                  <div class="box-inline"><span class="icon novi-icon icon-md-middle icon-secondary mdi mdi-map-marker"></span><a class="event-default-link" href="single-event.html">2130 Fulton Street, San Diego</a></div>
+                  <h5><a class="event-default-title" href="single-event.html">Productivity Improvement Seminar</a></h5>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
